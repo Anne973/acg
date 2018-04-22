@@ -9,13 +9,13 @@ use Symfony\Component\Routing\Annotation\Route;
  * Date: 21/04/2018
  * Time: 15:25
  */
-class HomeController extends Controller
+class NewsController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("actualites", name="actualites")
      */
     public function indexAction(){
-        return $this->render('home/home.html.twig');
+        return $this->render('news/actualites.html.twig');
 
     }
 

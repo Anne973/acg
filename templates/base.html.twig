@@ -44,7 +44,7 @@
                 <div class="span12">
                     <ul>
                         <li><strong>Association des Anciens Combattants et des Victimes de Guerre de Guyane française</strong></li>
-                        <li>Adresse: 38, rue des 14 et 22 juin 1962</li>
+                        <li>Adresse: 38, rue des 14 et 22 juin 1962 - Cayenne</li>
                         <li>Téléphone <i class="icon-phone"></i>05 94 31 47 23 </li>
                     </ul>
                 </div>
@@ -169,7 +169,7 @@
             <div class="row">
                 <div class="span6">
                     <div class="logo">
-                        <a href="#"><img src="{{ asset('img/logo.png') }}" alt="" class="logo" /></a>
+                        <a href="{{ path('homepage') }}"><img src="{{ asset('img/logo.png') }}" alt="" class="logo" /></a>
 
                     <h1>Association des Anciens Combattants et des Victimes de Guerre de Guyane française</h1>
                 </div>
@@ -182,22 +182,22 @@
                                     <li class="dropdown active">
                                         <a href="#">L'association <i class="icon-angle-down"></i></a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="#">Présentation</a></li>
-                                            <li><a href="#">Le conseil d'administration</a></li>
-                                            <li><a href="#">Anciens présidents</a></li>
+                                            <li><a href="{{ path ('presentation') }}">Présentation</a></li>
+                                            <li><a href="{{ path ('conseil_administration') }}">Le conseil d'administration</a></li>
+                                            <li><a href="{{ path ('anciens_presidents') }}">Anciens présidents</a></li>
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#">Actualités </a>
+                                        <a href="{{ path ('actualites') }}">Actualités </a>
                                     </li>
                                     <li>
-                                        <a href="#">Rejoignez-nous </a>
+                                        <a href="{{ path('adhesion') }}">Rejoignez-nous </a>
                                     </li>
                                     <li>
-                                        <a href="#">Calendrier </a>
+                                        <a href="{{ path('calendrier') }}">Calendrier </a>
 
                                     <li>
-                                        <a href="#">Contact </a>
+                                        <a href="{{ path ('contact') }}">Contact </a>
                                     </li>
                                 </ul>
                             </nav>
@@ -278,7 +278,7 @@
     </footer>
 </div>
 <a href="#" class="scrollup"><i class="icon-chevron-up icon-square icon-32 active"></i></a>
-{% block javascripts %}
+
 <!-- javascript
   ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
@@ -300,6 +300,7 @@
 
 <!-- Template Custom JavaScript File -->
 <script src="{{ asset('js/custom.js') }}"></script>
+{% block javascripts %}
 {% endblock %}
 </body>
 </html>
