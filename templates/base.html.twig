@@ -1,12 +1,305 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <!-- css -->
+    {% block stylesheets %}
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/bootstrap-responsive.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/fancybox/jquery.fancybox.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/jcarousel.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/flexslider.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+    <!-- Theme skin -->
+    <link href="{{ asset('skins/default.css') }}" rel="stylesheet" />
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('ico/apple-touch-icon-144-precomposed.png') }}" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('ico/apple-touch-icon-114-precomposed.png') }}" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('ico/apple-touch-icon-72-precomposed.png') }}" />
+    <link rel="apple-touch-icon-precomposed" href="{{ asset('ico/apple-touch-icon-57-precomposed.png') }}" />
+    <link rel="shortcut icon" href="{{ asset('ico/favicon.png') }}" />
+    {% endblock %}
+    <!-- =======================================================
+      Theme Name: Flattern
+      Theme URL: https://bootstrapmade.com/flattern-multipurpose-bootstrap-template/
+      Author: BootstrapMade.com
+      Author URL: https://bootstrapmade.com
+    ======================================================= -->
+</head>
+
+<body>
+
+<div id="wrapper">
+    <!-- toggle top area -->
+    <div class="hidden-top">
+        <div class="hidden-top-inner container">
+            <div class="row">
+                <div class="span12">
+                    <ul>
+                        <li><strong>Association des Anciens Combattants et des Victimes de Guerre de Guyane française</strong></li>
+                        <li>Adresse: 38, rue des 14 et 22 juin 1962</li>
+                        <li>Téléphone <i class="icon-phone"></i>05 94 31 47 23 </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end toggle top area -->
+    <!-- start header -->
+    <header>
+        <div class="container ">
+            <!-- hidden top area toggle link -->
+            <div id="header-hidden-link">
+                <a href="#" class="toggle-link" title="Cliquez pour faire apparaître nos coordonnées" data-target=".hidden-top"><i></i>Open</a>
+            </div>
+            <!-- end toggle link -->
+            <div class="row nomargin">
+                <div class="span12">
+                    <div class="headnav">
+                        <ul>
+                            <li><a href="#mySignup" data-toggle="modal"><i class="icon-user"></i> Sign up</a></li>
+                            <li><a href="#mySignin" data-toggle="modal">Sign in</a></li>
+                        </ul>
+                    </div>
+                    <!-- Signup Modal -->
+                    <div id="mySignup" class="modal styled hide fade" tabindex="-1" role="dialog" aria-labelledby="mySignupModalLabel" aria-hidden="true">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 id="mySignupModalLabel">Create an <strong>account</strong></h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal">
+                                <div class="control-group">
+                                    <label class="control-label" for="inputEmail">Email</label>
+                                    <div class="controls">
+                                        <input type="text" id="inputEmail" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputSignupPassword">Password</label>
+                                    <div class="controls">
+                                        <input type="password" id="inputSignupPassword" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputSignupPassword2">Confirm Password</label>
+                                    <div class="controls">
+                                        <input type="password" id="inputSignupPassword2" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <button type="submit" class="btn">Sign up</button>
+                                    </div>
+                                    <p class="aligncenter margintop20">
+                                        Already have an account? <a href="#mySignin" data-dismiss="modal" aria-hidden="true" data-toggle="modal">Sign in</a>
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- end signup modal -->
+                    <!-- Sign in Modal -->
+                    <div id="mySignin" class="modal styled hide fade" tabindex="-1" role="dialog" aria-labelledby="mySigninModalLabel" aria-hidden="true">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 id="mySigninModalLabel">Login to your <strong>account</strong></h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal">
+                                <div class="control-group">
+                                    <label class="control-label" for="inputText">Username</label>
+                                    <div class="controls">
+                                        <input type="text" id="inputText" placeholder="Username">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="inputSigninPassword">Password</label>
+                                    <div class="controls">
+                                        <input type="password" id="inputSigninPassword" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <button type="submit" class="btn">Sign in</button>
+                                    </div>
+                                    <p class="aligncenter margintop20">
+                                        Forgot password? <a href="#myReset" data-dismiss="modal" aria-hidden="true" data-toggle="modal">Reset</a>
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- end signin modal -->
+                    <!-- Reset Modal -->
+                    <div id="myReset" class="modal styled hide fade" tabindex="-1" role="dialog" aria-labelledby="myResetModalLabel" aria-hidden="true">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 id="myResetModalLabel">Reset your <strong>password</strong></h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal">
+                                <div class="control-group">
+                                    <label class="control-label" for="inputResetEmail">Email</label>
+                                    <div class="controls">
+                                        <input type="text" id="inputResetEmail" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <button type="submit" class="btn">Reset password</button>
+                                    </div>
+                                    <p class="aligncenter margintop20">
+                                        We will send instructions on how to reset your password to your inbox
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- end reset modal -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="span6">
+                    <div class="logo">
+                        <a href="#"><img src="{{ asset('img/logo.png') }}" alt="" class="logo" /></a>
+
+                    <h1>Association des Anciens Combattants et des Victimes de Guerre de Guyane française</h1>
+                </div>
+                </div>
+                <div class="span6">
+                    <div class="navbar navbar-static-top">
+                        <div class="navigation">
+                            <nav>
+                                <ul class="nav topnav">
+                                    <li class="dropdown active">
+                                        <a href="#">L'association <i class="icon-angle-down"></i></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">Présentation</a></li>
+                                            <li><a href="#">Le conseil d'administration</a></li>
+                                            <li><a href="#">Anciens présidents</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">Actualités </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Rejoignez-nous </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Calendrier </a>
+
+                                    <li>
+                                        <a href="#">Contact </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- end navigation -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- end header -->
+    {% block content %}
+
+    {% endblock %}
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="span4">
+                    <div class="widget">
+                        <h5 class="widgetheading">Informations</h5>
+                        <ul class="link-list">
+                            <li><a href="#"></a></li>
+                            <li><a href="#">Statuts</a></li>
+                            <li><a href="#">Informations pratiques</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="span4">
+                    <div class="widget">
+                        <h5 class="widgetheading">Réglementation</h5>
+                        <ul class="link-list">
+                            <li><a href="#">Mentions légales</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="span4">
+                    <div class="widget">
+                        <h5 class="widgetheading">Gardez le contact</h5>
+                        <address>
+                            <strong>38, rue des 14 et 22 juin 1962</strong><br>
+                           97300 Cayenne<br>
+                            Guyane française
+                        </address>
+                        <p>
+                            <i class="icon-phone"></i> 05 94 31 47 23 <br>
+                            <i class="icon-envelope-alt"></i> email@domainname.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="sub-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="span6">
+                        <div class="copyright">
+                            <p>
+                                <span>&copy; ADACVG Guyane 2018 - Tous droits réservés.</span>
+                            </p>
+                            <div class="credits">
+                                <!--
+                                  All the links in the footer should remain intact.
+                                  You can delete the links only if you purchased the pro version.
+                                  Licensing information: https://bootstrapmade.com/license/
+                                  Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Flattern
+                                -->
+                                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<a href="#" class="scrollup"><i class="icon-chevron-up icon-square icon-32 active"></i></a>
+{% block javascripts %}
+<!-- javascript
+  ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{{ asset('js/jquery.js') }}"></script>
+<script src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
+<script src="{{ asset('js/bootstrap.js') }}"></script>
+<script src="{{ asset('js/jcarousel/jquery.jcarousel.min.js') }}"></script>
+<script src="{{ asset('js/jquery.fancybox.pack.js') }}"></script>
+<script src="{{ asset('js/jquery.fancybox-media.js') }}"></script>
+<script src="{{ asset('js/google-code-prettify/prettify.js') }}"></script>
+<script src="{{ asset('js/portfolio/jquery.quicksand.js') }}"></script>
+<script src="{{ asset('js/portfolio/setting.js') }}"></script>
+<script src="{{ asset('js/jquery.flexslider.js') }}"></script>
+<script src="{{ asset('js/jquery.nivo.slider.js') }}"></script>
+<script src="{{ asset('js/modernizr.custom.js') }}"></script>
+<script src="{{ asset('js/jquery.ba-cond.min.js') }}"></script>
+<script src="{{ asset('js/jquery.slitslider.js') }}"></script>
+<script src="{{ asset('js/animate.js') }}"></script>
+
+<!-- Template Custom JavaScript File -->
+<script src="{{ asset('js/custom.js') }}"></script>
+{% endblock %}
+</body>
 </html>
