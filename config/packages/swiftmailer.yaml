@@ -1,3 +1,15 @@
 swiftmailer:
-    url: '%env(MAILER_URL)%'
+    #url: '%env(MAILER_URL)%'
     spool: { type: 'memory' }
+    transport: gmail
+    username: anne.derenoncourt@gmail.com
+    password: mirabelle973
+    host: localhost
+    port: 465
+    encryption: ssl
+    auth-mode: login
+    stream_options:
+        ssl:
+            allow_self_signed: true
+            verify_peer: false
+            verify_peer_name: false

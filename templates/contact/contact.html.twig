@@ -1,7 +1,15 @@
 {% extends 'base.html.twig' %}
 {% block content %}
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-success" style="margin-bottom: 0">
+
+            <strong>{{  message }}</strong>
+        </div>
+
+    {% endfor %}
     <section id="inner-headline">
         <div class="container">
+
             <div class="row">
                 <div class="span4">
                     <div class="inner-heading">
@@ -10,7 +18,8 @@
                 </div>
                 <div class="span8">
                     <ul class="breadcrumb">
-                        <li><a href="{{ path('homepage') }}"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>
+                        <li><a href="{{ path('homepage') }}"><i class="icon-home"></i></a><i
+                                    class="icon-angle-right"></i></li>
                         <li class="active">Contact</li>
                     </ul>
                 </div>
@@ -18,71 +27,74 @@
         </div>
     </section>
     <section id="content">
-        <div id="google-map"></div>
+        <div id="map" style="height:400px; margin-bottom: 40px;" ></div>
 
         <div class="container">
             <div class="row">
                 <div class="span12">
                     <h4>Contactez-nous <strong>en remplissant le formulaire ci-dessous</strong></h4>
+                    <div class="contactForm">
+                        {{ form_start(form) }}
+                        {{ form_errors(form) }}
 
-                    <form action="" method="post" role="form" class="contactForm">
-                        <div id="sendmessage">Your message has been sent. Thank you!</div>
-                        <div id="errormessage"></div>
+                        {% for message in app.flashes('notice') %}
+                            <div class="flash-notice">  {{ message }}</div>
+                        {% endfor %}
 
                         <div class="row">
                             <div class="span4 form-group">
-                                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
-                                       data-rule="minlen:4" data-msg="Please enter at least 4 chars"/>
-                                <div class="validation"></div>
+                                {{ form_errors(form.name) }}
+                                {{ form_widget(form.name,{'attr': {'placeholder':'Votre nom', 'class':'form-control' }}) }}
                             </div>
+
                             <div class="span4 form-group">
-                                <input type="email" class="form-control" name="email" id="email"
-                                       placeholder="Your Email" data-rule="email"
-                                       data-msg="Please enter a valid email"/>
-                                <div class="validation"></div>
+                                {{ form_errors(form.email) }}
+                                {{ form_widget(form.email,{'attr': {'placeholder': 'Votre email', 'class':'form-control'}}) }}
                             </div>
+
                             <div class="span4 form-group">
-                                <input type="text" class="form-control" name="subject" id="subject"
-                                       placeholder="Subject" data-rule="minlen:4"
-                                       data-msg="Please enter at least 8 chars of subject"/>
-                                <div class="validation"></div>
+                                {{ form_errors(form.subject) }}
+                                {{ form_widget(form.subject,{'attr': {'placeholder': 'Objet', 'class':'form-control'}}) }}
                             </div>
+
                             <div class="span12 margintop10 form-group">
-                                <textarea class="form-control" name="message" rows="12" data-rule="required"
-                                          data-msg="Please write something for us" placeholder="Message"></textarea>
-                                <div class="validation"></div>
+                                {{ form_errors(form.message) }}
+                                {{ form_widget(form.message, {'attr': {'placeholder': 'Message','class':'form-control', 'rows':'12'}}) }}
+
                                 <p class="text-center">
-                                    <button class="btn btn-large btn-theme margintop10" type="submit">Submit message
+                                    <button class="btn btn-large btn-theme margintop10" type="submit">Envoyer
                                     </button>
                                 </p>
                             </div>
                         </div>
-                    </form>
+                        {{ form_end(form) }}
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
 {% endblock %}
 {% block javascripts %}
     <script>
         function initMap() {
             var adacvg = {lat: 4.934608, lng: -52.327294};
-            var map = new google.maps.Map(document.getElementById('google-map'), {
+            var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 15,
                 center: adacvg
             });
 
             var infowindow = new google.maps.InfoWindow({
-                content: '<p>'+'<b>Maison du combattant</b>'+'</p>'+'<p>'+'38, rue des 14 et 22 juin 1962'+'</p>'
+                content: '<p>' + '<b>Maison du combattant</b>' + '</p>' + '<p>' + '38, rue des 14 et 22 juin 1962' + '</p>'
             });
             var marker = new google.maps.Marker({
                 position: adacvg,
                 map: map,
                 animation: google.maps.Animation.DROP,
-                title : 'Maison du combattant'
+                title: 'Maison du combattant'
 
             });
-            marker.addListener('click', function() {
+            marker.addListener('click', function () {
                 infowindow.open(map, marker);
             });
         }
@@ -90,4 +102,7 @@
 
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrQL_c6RoayVkQDzIqsJBwlhbc9UrzmBM&callback=initMap"></script>
+
+
+
 {% endblock %}
