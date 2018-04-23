@@ -1,5 +1,6 @@
 <?php
 namespace App\Controller;
+use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -14,8 +15,9 @@ class HomeController extends Controller
     /**
      * @Route("/", name="homepage")
      */
-    public function indexAction(){
-        return $this->render('home/home.html.twig');
+    public function indexAction(ArticleRepository $articleRepository){
+        $lastArticles = $articleRepository -> getArticlesInHomepage();
+        return $this->render('home/home.html.twig', array('lastArticles' => $lastArticles));
 
     }
 

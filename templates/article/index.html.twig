@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+{% block title %}Actualités {% endblock %}
+{% block content %}
+    <section id="inner-headline">
+        <div class="container">
+            <div class="row">
+                <div class="span4">
+                    <div class="inner-heading">
+                        <h2>Actualités</h2>
+                    </div>
+                </div>
+                <div class="span8">
+                    <ul class="breadcrumb">
+                        <li><a href="{{ path('homepage') }}"><i class="icon-home"></i></a><i
+                                    class="icon-angle-right"></i></li>
+                        <li class="active">Actualités</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="span4">
+                    <aside class="left-sidebar">
+                        <div class="widget">
+                            <form class="form-search">
+                                <input placeholder="Type something" type="text" class="input-medium search-query">
+                                <button type="submit" class="btn btn-square btn-theme">Search</button>
+                            </form>
+                        </div>
+                        <div class="widget">
+                            <h5 class="widgetheading">Derniers articles</h5>
+                            <ul class="recent">
+                                <li>
+                                    <h6><a href="#">Lorem ipsum dolor sit</a></h6>
+                                    <p>
+                                        Mazim alienum appellantur eu cu ullum officiis pro pri
+                                    </p>
+                                </li>
+                                <li>
+                                    <h6><a href="#">Maiorum ponderum eum</a></h6>
+                                    <p>
+                                        Mazim alienum appellantur eu cu ullum officiis pro pri
+                                    </p>
+                                </li>
+                                <li>
+                                    <h6><a href="#">Et mei iusto dolorum</a></h6>
+                                    <p>
+                                        Mazim alienum appellantur eu cu ullum officiis pro pri
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+                <div class="span8">
+                    {% for article in listArticles %}
+                        <article>
+                            <div class="row">
+                                <div class="span8">
+                                    <div class="post-image">
+                                        <div class="post-heading">
+                                            <h3><a href="#">{{ article.title }}</a></h3>
+                                        </div>
+                                        <img src="img/dummies/blog/img1.jpg" alt=""/>
+                                    </div>
+                                    <p>
+                                        {{ article.content }}
+                                    </p>
+                                    <div class="bottom-article">
+                                        <ul class="meta-post">
+                                            <li><i class="icon-calendar"></i><a
+                                                        href="#"> {{ article.date|date('d/m/Y') }}</a></li>
+                                        </ul>
+                                        <a href="#" class="pull-right">Continue reading <i class="icon-angle-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    {% endfor %}
+
+
+                    <div id="pagination">
+
+
+
+                        {% for p in range(1, nbPages) %}
+                            {% if p == page %}
+                               <span class="current">{{ p }}</a></span>
+                            {% else %}
+                            <a href="{{ path('actualites', {'page': p}) }}" class="inactive"> {{ p }}</a>
+                            {% endif %}
+
+
+
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

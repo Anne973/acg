@@ -74,54 +74,25 @@
             </div>
 
             <div class="row">
-
+    {% for article in lastArticles %}
                 <div class="span4">
                     <div class="box alignleft">
                         <div class="alignaleft icon;" style="border-bottom: solid 1px;">
                             <i class="icon-pencil icon-circled icon-64 active"></i>
                         </div>
                         <div class="text">
-                            <h6>Titre 1</h6>
-                            <p><i class="icon-calendar"></i> Ajouté le</p>
+                            <h6>{{ article.title }}</h6>
+                            <p><i class="icon-calendar"></i> Ajouté le {{ article.date|date('d/m/Y') }}</p>
                             <p>
-                                Lorem ipsum dolor sit amet, has ei ipsum scaevola deseruisse am sea facilisis.
+                                {{ article.content }}
                             </p>
                             <a href="#">Learn more</a>
                         </div>
                     </div>
                 </div>
+        {% endfor %}
 
-                <div class="span4">
-                    <div class="box alignleft">
-                        <div class="alignaleft icon;" style="border-bottom: solid 1px;">
-                            <i class="icon-pencil icon-circled icon-64 active"></i>
-                        </div>
-                        <div class="text">
-                            <h6>Titre 2</h6>
-                            <p><i class="icon-calendar"></i> Ajouté le</p>
-                            <p>
-                                Lorem ipsum dolor sit amet, has ei ipsum scaevola deseruisse am sea facilisis.
-                            </p>
-                            <a href="#">Learn more</a>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="span4">
-                    <div class="box alignleft">
-                        <div class="alignleft icon;" style="border-bottom: solid 1px;">
-                            <i class="icon-pencil icon-circled icon-64 active"></i>
-                        </div>
-                        <div class="text">
-                            <h6>Titre 3</h6>
-                            <p><i class="icon-calendar"></i> Ajouté le</p>
-                            <p>
-                                Lorem ipsum dolor sit amet, has ei ipsum scaevola deseruisse am sea facilisis.
-                            </p>
-                            <a href="#">Learn more</a>
-                        </div>
-                    </div>
-                </div>
             </div>
 
 
