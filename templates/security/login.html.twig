@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <div class="row">
+
+
+            <div class="modal styled" style="margin: auto" aria-labelledby="mySigninModalLabel" aria-hidden="true"  >
+                {% if error %}
+                    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+                <div class="modal-header">
+
+                    <h4 id="mySigninModalLabel"><strong>Identifiez-vous</strong></h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" action="{{ path('login') }}" method="post">
+                        <div class="control-group">
+                            <label class="control-label" for="username">Username</label>
+                            <div class="controls">
+                                <input type="text" id="username" name="_username" value="{{ last_username }}"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="password">Password</label>
+                            <div class="controls">
+                                <input type="password" id="password" name="_password"/>
+
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="controls">
+                                <button type="submit" class="btn">Valider</button>
+                            </div>
+                            <p class="aligncenter margintop20">
+                                Mot de passe oublié? <a href="#">Réinitialiser</a>
+                            </p>
+                        </div>
+                    </form>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

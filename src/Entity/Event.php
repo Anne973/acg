@@ -22,7 +22,7 @@ class Event
     private $name;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     private $date;
 

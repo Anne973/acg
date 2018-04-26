@@ -1,20 +1,79 @@
 {% extends 'base.html.twig' %}
+{% block content %}
+    <section id="inner-headline">
+        <div class="container">
+            <div class="row">
+                <div class="span8">
+                    <div class="inner-heading">
+                        <h2>Calendrier des évènements 2018</h2>
+                    </div>
+                </div>
+                <div class="span4">
+                    <ul class="breadcrumb">
+                        <li><a href="{{ path('homepage') }}"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>
+                        <li class="active">Calendrier</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="content">
+        <div class="container">
 
-{% block title %}Hello {{ controller_name }}!{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+            <div class="row">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+                <div class="span10">
+                    <h4>Default Styles with hover enabled</h4>
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'src/Controller/EventController.php'|file_link(0) }}">src/Controller/EventController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'templates/event/index.html.twig'|file_link(0) }}">templates/event/index.html.twig</a></code></li>
-    </ul>
-</div>
+                            <th>
+                                Evènement
+                            </th>
+                            <th>
+                                Date
+                            </th>
+                            <th>
+                                Heure
+                            </th>
+                            <th>
+                                Lieu
+                            </th>
+                            <th>
+                                Adhérents
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for event in events %}
+                        <tr>
+
+                            <td>
+                                {{ event.name }}
+                            </td>
+                            <td>
+                                {{ event.date|date('d/m/Y') }}
+                            </td>
+                            <td>
+                                {{ event.time|date('H:i') }}
+                            </td>
+                            <td>
+                                {{ event.place }}
+                            </td>
+                            <td>
+                                <button class="btn btn-green">je participe</button>
+                            </td>
+                        </tr>
+                            {% endfor %}
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            </div>
+
+    </section>
 {% endblock %}

@@ -30,5 +30,16 @@ class ArticleController extends Controller
         return $this->render('Article/index.html.twig', array('listArticles' => $listArticles, 'nbPages' => $nbPages, 'page' => $page));
     }
 
+    /**
+     * @param Article $article
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/article/{id}", name="article")
+     */
+    public function articleAction(Article $article, ArticleRepository $articleRepository )
+    {
+        $lastArticles = $articleRepository -> getArticlesInHomepage();
+        return $this->render('Article/article.html.twig', array('article' => $article, 'lastArticles' =>$lastArticles));
+
+    }
 
 }

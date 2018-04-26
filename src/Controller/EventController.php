@@ -2,18 +2,18 @@
 
 namespace App\Controller;
 
+use App\Repository\EventRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class EventController extends Controller
 {
     /**
-     * @Route("/event", name="event")
+     * @Route("/calendrier", name="calendrier")
      */
-    public function index()
+    public function indexAction(EventRepository $eventRepository)
     {
-        return $this->render('event/index.html.twig', [
-            'controller_name' => 'EventController',
-        ]);
+        $events=$eventRepository -> getEvents();
+        return $this->render('event/index.html.twig', array('events' => $events));
     }
 }

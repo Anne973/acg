@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+{% block title %}Actualités {% endblock %}
+{% block content %}
+    <section id="inner-headline">
+        <div class="container">
+            <div class="row">
+                <div class="span4">
+
+                </div>
+                <div class="span8">
+                    <ul class="breadcrumb">
+                        <li><a href="{{ path('homepage') }}"><i class="icon-home"></i></a><i
+                                    class="icon-angle-right"></i></li>
+                        <li><a href="{{ path('actualites') }}">Actualités</a><i
+                                    class="icon-angle-right"></i></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="span4">
+                    <aside class="left-sidebar">
+                        <div class="widget">
+                            <form class="form-search">
+                                <input placeholder="Type something" type="text" class="input-medium search-query">
+                                <button type="submit" class="btn btn-square btn-theme">Search</button>
+                            </form>
+                        </div>
+                        <div class="widget">
+                            <h5 class="widgetheading">Derniers articles</h5>
+                            <ul class="recent">
+                                {% for article in lastArticles %}
+                                    <li>
+                                        <h6><a href="#">{{ article.title }}</a></h6>
+                                        <p>
+                                            {{ article.content }}
+                                        </p>
+                                    </li>
+                                {% endfor %}
+
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+                <div class="span8">
+
+                    <article>
+                        <div class="row">
+                            <div class="span8">
+                                <div class="post-image">
+                                    <div class="post-heading">
+                                        <h3><strong>{{ article.title }}</strong></h3>
+                                        <p><i class="icon-calendar"></i> {{ article.date|date('d/m/Y') }}</p>
+                                    </div>
+                                    <img src="img/dummies/blog/img1.jpg" alt=""/>
+                                </div>
+                                <p>
+                                    {{ article.content }}
+                                </p>
+
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -63,10 +63,14 @@
             <div class="row nomargin">
                 <div class="span12">
                     <div class="headnav">
+                        {% if app.user==null %}
                         <ul>
-                            <li><a href="#mySignup" data-toggle="modal"><i class="icon-user"></i> Sign up</a></li>
-                            <li><a href="#mySignin" data-toggle="modal">Sign in</a></li>
+                            <li><a href={{ path('login') }} ><i class="icon-user"></i> Identifiez-vous</a></li>
+                            <li><a href="{{ path('user_registration') }}">Créez un compte</a></li>
                         </ul>
+                        {%  else %}
+                            bienvenue {{ app.user.username }} <a href="{{ path('logout') }}"><i class="icon-signout"> </i></a>
+                        {% endif %}
                     </div>
                     <!-- Signup Modal -->
                     <div id="mySignup" class="modal styled hide fade" tabindex="-1" role="dialog" aria-labelledby="mySignupModalLabel" aria-hidden="true">
@@ -219,9 +223,9 @@
                     <div class="widget">
                         <h5 class="widgetheading">Divers</h5>
                         <ul class="link-list">
+
+                            <li><a href="{{ path('contact') }}">Contact</a></li>
                             <li><a href="#"></a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Admin</a></li>
 
                         </ul>
                     </div>

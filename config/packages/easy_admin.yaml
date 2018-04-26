@@ -1,0 +1,111 @@
+easy_admin:
+    site_name: 'ADACVG'
+    list:
+        actions:
+            - {name: 'edit', icon: 'pencil', label: 'Edit'}
+            - {name: 'delete', icon: 'trash', label: 'Delete'}
+            - {name: 'search', icon: 'search', label: 'Search'}
+            - {name: 'new', icon: 'plus', label: 'New'}
+            - {name: 'show', icon: 'eye', label: 'Show'}
+
+    entities:
+        Article:
+            class: App\Entity\Article
+            label: 'Articles'
+            list:
+                title: 'Articles'
+                fields:
+                    - id
+                    - { property: 'title', label: 'Titre' }
+
+
+            show:
+                title: 'Article #%%entity_id%%'
+                fields:
+                    - id
+                    - { property: 'title', label: 'Titre' }
+                    - { property: 'content', label: 'Texte' }
+
+
+            new:
+                title: 'Ajouter un article'
+                fields:
+                    - date
+                    - { property: 'title', label: 'Titre' }
+                    - { property: 'content', label: 'Texte' }
+
+            edit:
+                title: 'Article #%%entity_id%%'
+                fields:
+                    - date
+                    - { property: 'title', label: 'Titre' }
+                    - { property: 'content', label: 'Texte' }
+
+
+        Event:
+            class: App\Entity\Event
+            label: 'Calendrier'
+            list:
+                title: 'Calendrier'
+                fields:
+                    - id
+                    - { property: 'name', label: 'Evènement' }
+                    - date
+                    - { property: 'time', label: 'Heure' }
+                    - { property: 'place', label: 'Lieu' }
+            show:
+                title: 'Evenement #%%entity_id%%'
+                fields:
+                    - { property: 'name', label: 'Evènement' }
+                    - date
+                    - { property: 'time', label: 'Heure' }
+                    - { property: 'place', label: 'Lieu' }
+
+
+            new:
+                title: 'Ajouter un évènement'
+                fields:
+                    - { property: 'name', label: 'Evènement' }
+                    - date
+                    - { property: 'time', label: 'Heure' }
+                    - { property: 'place', label: 'Lieu' }
+            edit:
+                title: 'Evènement #%%entity_id%%'
+                fields:
+                    - { property: 'name', label: 'Evènement' }
+                    - date
+                    - { property: 'time', label: 'Heure' }
+                    - { property: 'place', label: 'Lieu' }
+
+
+
+        User:
+            class: App\Entity\User
+            label: 'Abonnés'
+            list:
+                title: 'Abonnés'
+                fields:
+                    - id
+                    - { property: 'username', label: 'Nom' }
+                    - { property: 'email', type: 'email' }
+
+            show:
+                title: 'Abonné #%%entity_id%%'
+                fields:
+                    - { property: 'username', label: 'Nom' }
+                    - email
+
+            new:
+                title: 'Ajouter un abonné'
+                fields:
+                    - { property: 'username', label: 'Nom' }
+                    - email
+
+            edit:
+                title: 'Abonné #%%entity_id%%'
+                fields:
+                    - { property: 'username', label: 'Nom' }
+                    - email
+
+
+

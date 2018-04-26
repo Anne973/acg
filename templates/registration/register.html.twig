@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <div class="row">
+
+
+        <div class="modal styled" style="margin: auto" aria-labelledby="mySigninModalLabel" aria-hidden="true"  >
+
+            <div class="modal-header">
+
+                <h4 id="mySigninModalLabel"><strong>Créez votre compte</strong></h4>
+            </div>
+            <div class="modal-body">
+
+                {{ form_start(form)}}
+
+                    <div class="control-group">
+
+                        {{ form_label(form.username, "Nom", {'label_attr':{'class':'control-label'}})}}
+                        {{ form_errors(form.username) }}
+                        {{ form_widget(form.username, {'attr':{'class':'controls'}}) }}
+                    </div>
+
+                   <div class="control-group">
+                    {{ form_label(form.email, "Email",{'label_attr':{'class':'control-label'}} )}}
+                    {{ form_errors(form.email) }}
+                    {{ form_widget(form.email, {'attr':{'class':'controls'}}) }}
+                </div>
+
+                    <div class="control-group">
+                        <div class="control-label">
+                        {{ form_label(form.plainPassword.first) }}</div>
+                        {{ form_errors(form.plainPassword.first) }}
+                        {{ form_widget(form.plainPassword.first, {'attr':{'class':'controls'}}) }}
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label">
+                            {{ form_label(form.plainPassword.second) }}</div>
+                        {{ form_errors(form.plainPassword.second) }}
+                        {{ form_widget(form.plainPassword.second, {'attr':{'class':'controls'}}) }}
+                    </div>
+
+                    <div class="control-group">
+                        <div class="controls">
+                            <button type="submit" class="btn">Valider</button>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
