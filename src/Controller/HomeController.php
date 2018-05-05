@@ -2,6 +2,7 @@
 namespace App\Controller;
 use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -21,5 +22,22 @@ class HomeController extends Controller
 
     }
 
+    /**
+     * @Route("/download_statuts", name="download_statuts")
+     */
+    public function downloadAction()
+    {
+        $pdfPath = $this->getParameter('dir.downloads').'/statuts.pdf';
 
+        return $this->file($pdfPath, 'dossier-statuts',ResponseHeaderBag::DISPOSITION_INLINE);
+    }
+
+    /**
+     * @Route("/legal_notice", name="legal_notice")
+     */
+    public function legalAction()
+    {
+        return $this->render('home/legal.html.twig');
+
+    }
 }

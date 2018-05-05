@@ -29,6 +29,17 @@ class EventRepository extends ServiceEntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    public function getEventsInArticlePage()
+    {
+        $qb = $this->createQueryBuilder('a')
+
+            ->orderBy('a.id', 'asc')
+            ->andWhere('a.date > :now')
+            ->setParameter('now', new \DateTimeImmutable())
+            ->setMaxResults(Event::EVENTS_IN_ARTICLE_PAGE);
+        return $qb->getQuery()->getResult();
+    }
+
 //    /**
 //     * @return Event[] Returns an array of Event objects
 //     */

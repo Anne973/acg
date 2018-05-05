@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Event
 {
+    const EVENTS_IN_ARTICLE_PAGE= 3;
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -27,7 +28,7 @@ class Event
     private $date;
 
     /**
-     * @ORM\Column(type="time_immutable")
+     * @ORM\Column(type="time")
      */
     private $time;
 
@@ -35,6 +36,11 @@ class Event
      * @ORM\Column(type="string", length=255)
      */
     private $place;
+
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+    }
 
     public function getId()
     {
@@ -65,12 +71,12 @@ class Event
         return $this;
     }
 
-    public function getTime(): ?\DateTimeImmutable
+    public function getTime(): ?\DateTime
     {
         return $this->time;
     }
 
-    public function setTime(\DateTimeImmutable $time): self
+    public function setTime(\DateTime $time): self
     {
         $this->time = $time;
 

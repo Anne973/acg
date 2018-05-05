@@ -31,26 +31,20 @@
                             </form>
                         </div>
                         <div class="widget">
-                            <h5 class="widgetheading">Derniers articles</h5>
+                            <h5 class="widgetheading">Evènements à venir</h5>
                             <ul class="recent">
-                                <li>
-                                    <h6><a href="#">Lorem ipsum dolor sit</a></h6>
-                                    <p>
-                                        Mazim alienum appellantur eu cu ullum officiis pro pri
-                                    </p>
-                                </li>
-                                <li>
-                                    <h6><a href="#">Maiorum ponderum eum</a></h6>
-                                    <p>
-                                        Mazim alienum appellantur eu cu ullum officiis pro pri
-                                    </p>
-                                </li>
-                                <li>
-                                    <h6><a href="#">Et mei iusto dolorum</a></h6>
-                                    <p>
-                                        Mazim alienum appellantur eu cu ullum officiis pro pri
-                                    </p>
-                                </li>
+                                {% for event in listEvents %}
+                                    <li>
+                                        <h6 style="font-size: 1.2em">{{ event.name }}</h6>
+                                        <p>
+                                            <i class="icon-calendar"></i>{{ event.date|date('d/m/Y') }}
+                                        </p>
+                                        <p>
+                                            <i class="icon-map-marker"></i>{{ event.place }}
+                                        </p>
+                                    </li>
+                                {% endfor %}
+
                             </ul>
                         </div>
                     </aside>
@@ -62,19 +56,26 @@
                                 <div class="span8">
                                     <div class="post-image">
                                         <div class="post-heading">
-                                            <h3><a href="{{ path ('article', {'id': article.id}) }}">{{ article.title }}</a></h3>
+                                            <h3>
+                                                <a href="{{ path ('article', {'id': article.id}) }}">{{ article.title }}</a>
+                                            </h3>
                                         </div>
-                                        <img src="img/dummies/blog/img1.jpg" alt=""/>
+                                        {% for image in article.images %}
+                                            <img src="{{ asset(('uploads/articles/images/' ~ image.image)| imagine_filter('my_thumb')) }}"
+                                                 alt="{{ image.image }}" style="margin-bottom: 3px" >
+
+                                        {% endfor %}
                                     </div>
                                     <p>
-                                        {{ article.content }}
+                                        {{ article.limitedText|raw }}
                                     </p>
                                     <div class="bottom-article">
                                         <ul class="meta-post">
                                             <li><i class="icon-calendar"></i><a
                                                         href="#"> {{ article.date|date('d/m/Y') }}</a></li>
                                         </ul>
-                                        <a href="{{ path ('article', {'id': article.id}) }}" class="pull-right">Lire la suite <i class="icon-angle-right"></i></a>
+                                        <a href="{{ path ('article', {'id': article.id}) }}" class="pull-right">Lire la
+                                            suite <i class="icon-angle-right"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -85,12 +86,11 @@
                     <div id="pagination">
 
 
-
                         {% for p in range(1, nbPages) %}
                             {% if p == page %}
-                               <span class="current">{{ p }}</a></span>
+                                <span class="current">{{ p }}</a></span>
                             {% else %}
-                            <a href="{{ path('actualites', {'page': p}) }}" class="inactive"> {{ p }}</a>
+                                <a href="{{ path('actualites', {'page': p}) }}" class="inactive"> {{ p }}</a>
                             {% endif %}
 
 

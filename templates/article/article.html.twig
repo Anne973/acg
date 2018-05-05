@@ -36,7 +36,7 @@
                                     <li>
                                         <h6><a href="#">{{ article.title }}</a></h6>
                                         <p>
-                                            {{ article.content }}
+                                            {{ article.limitedText|raw }}
                                         </p>
                                     </li>
                                 {% endfor %}
@@ -58,9 +58,13 @@
                                     <img src="img/dummies/blog/img1.jpg" alt=""/>
                                 </div>
                                 <p>
-                                    {{ article.content }}
+                                    {{ article.content|raw }}
                                 </p>
+                                {% for image in article.images %}
+                                    <img src="{{ asset(('uploads/articles/images/' ~ image.image)| imagine_filter('my_thumb')) }}"
+                                         alt="{{ image.image }}" style="margin-bottom: 3px" >
 
+                                {% endfor %}
                             </div>
                         </div>
                     </article>

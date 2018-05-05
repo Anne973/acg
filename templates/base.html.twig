@@ -43,9 +43,10 @@
             <div class="row">
                 <div class="span12">
                     <ul>
-                        <li><strong>Association des Anciens Combattants et des Victimes de Guerre de Guyane française</strong></li>
-                        <li>Adresse: 38, rue des 14 et 22 juin 1962 - Cayenne</li>
+                        <li><strong>ADACVG</strong></li>
+                        <li>Adresse<i class="icon-map-marker"></i>38, rue des 14 et 22 juin 1962 - Cayenne</li>
                         <li>Téléphone <i class="icon-phone"></i>05 94 31 47 23 </li>
+                        <li>Permanences <i class="icon-group"></i>Les lundis et vendredis de 8h30 à 10h </li>
                     </ul>
                 </div>
             </div>
@@ -64,10 +65,7 @@
                 <div class="span12">
                     <div class="headnav">
                         {% if app.user==null %}
-                        <ul>
-                            <li><a href={{ path('login') }} ><i class="icon-user"></i> Identifiez-vous</a></li>
-                            <li><a href="{{ path('user_registration') }}">Créez un compte</a></li>
-                        </ul>
+
                         {%  else %}
                             bienvenue {{ app.user.username }} <a href="{{ path('logout') }}"><i class="icon-signout"> </i></a>
                         {% endif %}
@@ -175,7 +173,7 @@
                     <div class="logo">
                         <a href="{{ path('homepage') }}"><img src="{{ asset('img/logo.png') }}" alt="" class="logo" /></a>
 
-                    <h1>Association des Anciens Combattants et des Victimes de Guerre de Guyane française</h1>
+                    <h1>Association Départementale des Anciens Combattants et des Victimes de Guerre de Guyane française</h1>
                 </div>
                 </div>
                 <div class="span6">
@@ -225,7 +223,7 @@
                         <ul class="link-list">
 
                             <li><a href="{{ path('contact') }}">Contact</a></li>
-                            <li><a href="#"></a></li>
+                            <li><a href="{{ path('admin') }}">Admin</a></li>
 
                         </ul>
                     </div>
@@ -234,8 +232,8 @@
                     <div class="widget">
                         <h5 class="widgetheading">Informations légales</h5>
                         <ul class="link-list">
-                            <li><a href="#">Statuts</a></li>
-                            <li><a href="#">Mentions légales</a></li>
+                            <li><a href="{{ path('download_statuts') }}">Statuts</a></li>
+                            <li><a href="{{ path('legal_notice') }}">Mentions légales</a></li>
 
                         </ul>
                     </div>
@@ -251,7 +249,7 @@
                         </address>
                         <p>
                             <i class="icon-phone"></i> 05 94 31 47 23 <br>
-                            <i class="icon-envelope-alt"></i> email@domainname.com
+                            <i class="icon-envelope-alt"></i> ass-dep-anciens-combat@orange.fr
                         </p>
                     </div>
                 </div>

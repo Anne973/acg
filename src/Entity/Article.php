@@ -21,7 +21,7 @@ class Article
 
 
     /**
-     * @ORM\Column(type="datetime_immutable")
+     * @ORM\Column(type="datetime")
      */
     private $date;
 
@@ -35,10 +35,15 @@ class Article
      */
     private $content;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="article", cascade={"persist"}, orphanRemoval=true)
+     */
+    private $images;
+
     public function __construct()
     {
-        $this->date =new \DateTimeImmutable()
-        ;
+        $this->date =new \DateTime();
+        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getId()
@@ -46,12 +51,12 @@ class Article
         return $this->id;
     }
 
-    public function getDate(): ?\DateTimeImmutable
+    public function getDate(): ?\DateTime
     {
         return $this->date;
     }
 
-    public function setDate(\DateTimeImmutable $date): self
+    public function setDate(\DateTime $date): self
     {
         $this->date = $date;
 
@@ -75,10 +80,65 @@ class Article
         return $this->content;
     }
 
+    public function getLimitedText() {
+        $description=$this->getContent();
+
+        $lg_max = 200; // nombre de caractère autorisé
+        $description = strip_tags($description); // On retire toutes les balises
+        if (strlen($description) > $lg_max) {
+            $description = substr($description, 0, $lg_max) ;
+            $last_space = strrpos($description, " ") ;
+            $description = substr($description, 0, $last_space)."..." ;
+        }
+
+        return $description ;
+    }
+
     public function setContent(string $content): self
     {
         $this->content = $content;
 
         return $this;
+    }
+
+    /**
+     * Add image
+     *
+     * @param \App\Entity\Image $image
+     *
+     * @return Article
+     */
+    public function addImage(\App\Entity\Image $image)
+    {
+        $this->images[] = $image;
+        $image->setArticle($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove image
+     *
+     * @param \App\Entity\Image $image
+     */
+    public function removeImage(\App\Entity\Image $image)
+    {
+        $this->images->removeElement($image);
+    }
+
+    /**
+     * Get images
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+
+    public function getFirstImage(){
+        $first = $this->images->first();
+        return ($first)? $first->getImage(): null;
     }
 }

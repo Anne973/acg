@@ -20,6 +20,20 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
+    public function search($query)
+    {
+        $qb = $this->createQueryBuilder('a');
+
+        $words = explode(' ',$query);
+        foreach($words as $key => $word){
+            $qb->orWhere('a.title LIKE :word'.$key);
+            $qb->orWhere('a.content LIKE :word'.$key);
+            $qb->setParameter('word'.$key,'%'.$words[$key].'%');
+        }
+
+        return $qb->getQuery()->getResult();
+    }
+
     public function getArticlesInHomepage()
     {
         $qb = $this->createQueryBuilder('a')
