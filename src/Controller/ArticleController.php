@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Repository\ArticleRepository;
 use App\Repository\EventRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -13,7 +14,8 @@ class ArticleController extends Controller
     /**
      * @Route("actualites/{page}", name="actualites")
      */
-    public function indexAction($page = 1, ArticleRepository $articleRepository, EventRepository $eventRepository){
+    public function indexAction($page = 1, ArticleRepository $articleRepository, EventRepository $eventRepository)
+    {
         if ($page < 1) {
             throw $this->createNotFoundException("La page " . $page . " n'existe pas.");
         }
@@ -44,11 +46,28 @@ class ArticleController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      * @Route("/article/{id}", name="article")
      */
-    public function articleAction(Article $article, ArticleRepository $articleRepository )
+    public function articleAction(Article $article, ArticleRepository $articleRepository)
     {
-        $lastArticles = $articleRepository -> getArticlesInHomepage();
-        return $this->render('Article/article.html.twig', array('article' => $article, 'lastArticles' =>$lastArticles));
+        $lastArticles = $articleRepository->getArticlesInHomepage();
+        return $this->render('Article/article.html.twig', array('article' => $article, 'lastArticles' => $lastArticles));
 
+    }
+
+    /**
+     * @Route("search", name="search")
+     */
+    public function searchAction(Request $request, ArticleRepository $articleRepository)
+    {
+        $key = $request->get('key');
+        if (strlen($key) > 2) {
+            $listResults = $articleRepository->search($key);
+            $nbResults = count($listResults);
+            return $this->render('Article/searchView.html.twig', array('listResults' => $listResults, 'key' => $key, 'nbResults' => $nbResults));
+        } else {
+            $this->addFlash('notice', 'Veuillez entrer au moins trois caractères');
+            return $this->redirectToRoute('actualites');
+
+        }
     }
 
 }

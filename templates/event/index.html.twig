@@ -23,8 +23,8 @@
 
             <div class="row">
 
-                <div class="span10">
-                    <h4>Default Styles with hover enabled</h4>
+                <div class="span12">
+
                     <table class="table table-hover">
                         <thead>
                         <tr>
@@ -42,7 +42,7 @@
                                 Lieu
                             </th>
                             <th>
-                                Adhérents
+                                Ville
                             </th>
                         </tr>
                         </thead>
@@ -63,7 +63,7 @@
                                 {{ event.place }}
                             </td>
                             <td>
-                                <button class="btn btn-green">je participe</button>
+                                {{ event.town }}
                             </td>
                         </tr>
                             {% endfor %}

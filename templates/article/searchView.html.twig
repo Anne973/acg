@@ -4,10 +4,18 @@
     <section id="inner-headline">
         <div class="container">
             <div class="row">
-                <div class="span4">
+                <div class="span8">
+
+                    <div class="inner-heading">
+                        {% if nbResults < 2 %}
+                            <h2>{{ nbResults }} résultat pour "{{ key }}"</h2>
+                        {% else %}
+                            <h2>{{ nbResults }} résultats pour "{{ key }}"</h2>
+                        {% endif %}
+                    </div>
 
                 </div>
-                <div class="span8">
+                <div class="span4">
                     <ul class="breadcrumb">
                         <li><a href="{{ path('homepage') }}"><i class="icon-home"></i></a><i
                                     class="icon-angle-right"></i></li>
@@ -29,20 +37,7 @@
                                 <button type="submit" class="btn btn-square btn-theme">Rechercher</button>
                             </form>
                         </div>
-                        <div class="widget">
-                            <h5 class="widgetheading">Derniers articles</h5>
-                            <ul class="recent">
-                                {% for article in lastArticles %}
-                                    <li>
-                                        <h6><i class="icon icon-star-empty"></i><a href="{{ path ('article', {'id': article.id}) }}">{{ article.title }}</a></h6>
-                                        <p>
-                                            {{ article.limitedText|raw }}
-                                        </p>
-                                    </li>
-                                {% endfor %}
 
-                            </ul>
-                        </div>
                     </aside>
                 </div>
                 <div class="span8">
@@ -50,20 +45,11 @@
                     <article>
                         <div class="row">
                             <div class="span8">
-                                <div class="post-image">
-                                    <div class="post-heading">
-                                        <h3><strong>{{ article.title }}</strong></h3>
-                                        <p><i class="icon-calendar"></i> {{ article.date|date('d/m/Y') }}</p>
-                                    </div>
-                                    <img src="img/dummies/blog/img1.jpg" alt=""/>
-                                </div>
-                                <p>
-                                    {{ article.content|raw }}
-                                </p>
-                                {% for image in article.images %}
-                                    <img src="{{ asset(('uploads/articles/images/' ~ image.image)| imagine_filter('my_thumb')) }}"
-                                         alt="{{ image.image }}" style="margin-bottom: 3px" >
-
+                                {% for result in listResults %}
+                                    <h4> <strong>{{ result.title }} </strong></h4>
+                                    <p> {{ result.limitedText|raw }} </p>
+                                     <a href="{{ path ('article', {'id': result.id}) }}"><i class="icon-circle-arrow-right icon-square active icon-32"></i></a>
+                                    <hr>
                                 {% endfor %}
                             </div>
                         </div>
@@ -71,5 +57,6 @@
                 </div>
             </div>
         </div>
+
     </section>
 {% endblock %}

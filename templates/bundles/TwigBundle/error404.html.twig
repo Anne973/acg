@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <section id="inner-headline">
+        <div class="container">
+            <div class="row">
+                <div class="span4">
+                    <div class="inner-heading">
+                        <h2>404</h2>
+                    </div>
+                </div>
+                <div class="span8">
+                    <ul class="breadcrumb">
+                        <li><a href="{{ path('homepage') }}"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>
+
+                        <li class="active">404 Erreur</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <h2 class="aligncenter">404 Page non trouvée</h2>
+                        <p class="aligncenter">
+                            La page demandée n'a pas été trouvée. Vérifiez votre URL ou <a href="{{ path('homepage') }}">retournez à la page d'accueil</a>
+                        </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

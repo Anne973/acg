@@ -37,6 +37,13 @@ class Event
      */
     private $place;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $town;
+
+
+
     public function __construct()
     {
         $this->date = new \DateTime();
@@ -91,6 +98,18 @@ class Event
     public function setPlace(string $place): self
     {
         $this->place = $place;
+
+        return $this;
+    }
+
+    public function getTown(): ?string
+    {
+        return $this->town;
+    }
+
+    public function setTown(string $town): self
+    {
+        $this->town = $town;
 
         return $this;
     }
