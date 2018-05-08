@@ -3,8 +3,10 @@
 namespace App\DataFixtures;
 
 use App\Entity\Article;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
 /**
@@ -15,20 +17,35 @@ use Doctrine\Common\Persistence\ObjectManager;
  */
 class AppFixtures extends Fixture
 {
+
+    private $passwordEncoder;
+
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+    {
+        $this->passwordEncoder = $passwordEncoder;
+    }
+
     public function load(ObjectManager $manager)
     {
-        // create 3 articles
-        for ($i = 0; $i < 4; $i++) {
-            $article = new Article();
-            $article->setTitle('article ' . $i);
-            $article->setContent('Hae duae provinciae bello quondam piratico catervis mixtae praedonum a Servilio pro consule missae sub iugum factae sunt vectigales. et hae quidem regiones velut in prominenti terrarum lingua positae ob orbe eoo monte Amano disparantur.');
-            $manager->persist($article);
+        foreach ($this->getUserData() as [$username, $password, $email, $roles])
+        {
+            $user = new User();
+            $user->setUsername($username);
+            $user->setPassword($this->passwordEncoder->encodePassword($user, $password));
+            $user->setEmail($email);
+            $user->setRoles($roles);
+            $manager->persist($user);
+
         }
-
-
-
-
-
         $manager->flush();
+    }
+
+    private function getUserData()
+    {
+        return [
+            ['Admin', 'admin', 'ass-dep-anciens-combat@orange.fr', ['ROLE_ADMIN']],
+            ['Fredy', 'april', 'fredy.lucas@hotmail.fr', ['ROLE_USER']],
+
+        ];
     }
 }
