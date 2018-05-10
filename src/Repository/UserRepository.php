@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Persistence\ManagerRegistry;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -13,11 +14,21 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  * @method User[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class UserRepository extends ServiceEntityRepository
+
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, User::class);
     }
+
+    public function getUser($key){
+        $qb = $this->createQueryBuilder('a')
+            ->where('a.token = :token')
+            ->setParameter('token', $key);
+
+        return $qb->getQuery()->getSingleResult();
+    }
+}
 
 
 //    /**
@@ -48,4 +59,4 @@ class UserRepository extends ServiceEntityRepository
         ;
     }
     */
-}
+

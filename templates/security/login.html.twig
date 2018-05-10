@@ -1,6 +1,24 @@
 {% extends 'base.html.twig' %}
 {% block content %}
-    <div class="row">
+    <section id="inner-headline" style="margin-bottom: 100px;">
+        <div class="container">
+            <div class="row">
+                <div class="span6">
+                    <div class="inner-heading">
+                        <h2>Login</h2>
+                    </div>
+                </div>
+                <div class="span6">
+                    <ul class="breadcrumb">
+                        <li><a href="{{ path('homepage') }}"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>
+                        <li><a href="#">Sécurité</a><i class="icon-angle-right"></i></li>
+                        <li class="active">Login<li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="row" style="margin-bottom: 100px;">
 
 
             <div class="modal styled" style="margin: auto" aria-labelledby="mySigninModalLabel" aria-hidden="true"  >
@@ -14,13 +32,13 @@
                 <div class="modal-body">
                     <form class="form-horizontal" action="{{ path('login') }}" method="post">
                         <div class="control-group">
-                            <label class="control-label" for="username">Username</label>
+                            <label class="control-label" for="username">Nom</label>
                             <div class="controls">
                                 <input type="text" id="username" name="_username" value="{{ last_username }}"/>
                             </div>
                         </div>
                         <div class="control-group">
-                            <label class="control-label" for="password">Password</label>
+                            <label class="control-label" for="password">Mot de passe</label>
                             <div class="controls">
                                 <input type="password" id="password" name="_password"/>
 
@@ -31,7 +49,7 @@
                                 <button type="submit" class="btn">Valider</button>
                             </div>
                             <p class="aligncenter margintop20">
-                                Mot de passe oublié? <a href="#">Réinitialiser</a>
+                                Mot de passe oublié? <a href="{{ path('forgot_password') }}">Réinitialiser</a>
                             </p>
                         </div>
                     </form>

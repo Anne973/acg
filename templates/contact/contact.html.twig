@@ -1,5 +1,29 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style type="text/css">
+
+        #iw .title {
+
+            font-size: 18px;
+            font-weight: 400;
+            padding: 10px;
+            background-color: #F03C02;
+            color: white;
+
+        }
+
+        #iw {
+            padding: 10px;
+            border: 1px solid #000000;
+        }
+
+
+
+    </style>
+    {% endblock %}
 {% block content %}
+
     {% for message in app.flashes('notice') %}
         <div class="alert alert-success" style="margin-bottom: 0">
 
@@ -85,10 +109,18 @@
             });
 
             var infowindow = new google.maps.InfoWindow({
-                content: '<p>' + '<b>Maison du combattant</b>' + '</p>' + '<p>' + '38, rue des 14 et 22 juin 1962' + '</p>'
+                content: '<div id ="iw"><p class="title">' + '<b>Maison du combattant</b>' + '</p>' + '<p>' + '38, rue des 14 et 22 juin 1962' + '</p>' +
+                '<img src="{{ asset('img/dummies/maison_combattant.jpg') }}"></div>'
+
             });
+
+
             var marker = new google.maps.Marker({
                 position: adacvg,
+                icon: {
+                    path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+                    scale: 6
+                },
                 map: map,
                 animation: google.maps.Animation.DROP,
                 title: 'Maison du combattant'

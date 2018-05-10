@@ -1,5 +1,18 @@
 {% extends 'base.html.twig' %}
+{% block title %}Bienvenue{% endblock %}
+{% block description %}L’Association Départementale des Anciens Combattants et Victimes de Guerre de la GUYANE (ADACVG GUYANE) existe depuis 1944.
+    L’ADACVG GUYANE fédère des anciens combattants, des victimes de guerre, des ressortissants
+    de l’Office National des Anciens Combattants et Victimes de Guerre ainsi que des sympathisants
+    qui ont vocation à soutenir les anciens combattants et les victimes de guerre de la GUYANE française et à entretenir le « devoir de mémoire ».{% endblock %}
 {% block content %}
+    {% for message in app.session.flashbag.get('info') %}
+        <div class="alert alert-success" style = "margin-bottom: 0;">
+            <button type="button" class="close" data-dismiss="alert">
+                &times;
+            </button>{{ message }}
+
+        </div>
+    {% endfor %}
     <section id="featured">
         <!-- start slider -->
         <!-- Slider -->

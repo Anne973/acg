@@ -4,6 +4,7 @@ parameters:
     locale: 'en'
     app.path.article_images: uploads/articles/images
     dir.downloads: ../public/downloads
+    mailer_user: 'ass-dep-anciens-combat@orange.fr'
 
 services:
     # default configuration for services in *this* file
