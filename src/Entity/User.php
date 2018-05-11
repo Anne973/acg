@@ -47,7 +47,7 @@ class User implements UserInterface, \Serializable
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=254, unique=true)
+     * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\NotBlank()
      * @Assert\Email()
      */
@@ -64,7 +64,7 @@ class User implements UserInterface, \Serializable
     private $roles= array();
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=180, nullable=true)
      */
     private $token;
 

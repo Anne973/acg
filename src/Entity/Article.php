@@ -96,7 +96,7 @@ class Article
 
     public function setContent(string $content): self
     {
-        $this->content = $content;
+        $this->content = html_entity_decode($content, ENT_QUOTES);
 
         return $this;
     }
