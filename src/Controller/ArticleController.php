@@ -20,7 +20,7 @@ class ArticleController extends Controller
             throw $this->createNotFoundException("La page " . $page . " n'existe pas.");
         }
 
-        dump($articleRepository->search('provinciae bello'));
+        //dump($articleRepository->search('provinciae bello'));
 
         $nbPerPage = Article::ARTICLES_PER_PAGE;
 
