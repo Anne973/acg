@@ -34,7 +34,7 @@ class ArticleController extends Controller
 
         $listEvents = $eventRepository->getEventsInArticlePage();
 
-        return $this->render('Article/index.html.twig', array(
+        return $this->render('article/index.html.twig', array(
             'listArticles' => $listArticles,
             'nbPages' => $nbPages,
             'page' => $page,
@@ -49,7 +49,7 @@ class ArticleController extends Controller
     public function articleAction(Article $article, ArticleRepository $articleRepository)
     {
         $lastArticles = $articleRepository->getArticlesInHomepage();
-        return $this->render('Article/article.html.twig', array('article' => $article, 'lastArticles' => $lastArticles));
+        return $this->render('article/article.html.twig', array('article' => $article, 'lastArticles' => $lastArticles));
 
     }
 
@@ -62,7 +62,7 @@ class ArticleController extends Controller
         if (strlen($key) > 2) {
             $listResults = $articleRepository->search($key);
             $nbResults = count($listResults);
-            return $this->render('Article/searchView.html.twig', array('listResults' => $listResults, 'key' => $key, 'nbResults' => $nbResults));
+            return $this->render('article/searchView.html.twig', array('listResults' => $listResults, 'key' => $key, 'nbResults' => $nbResults));
         } else {
             $this->addFlash('notice', 'Veuillez entrer au moins trois caractères');
             return $this->redirectToRoute('actualites');
