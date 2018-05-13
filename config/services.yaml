@@ -5,6 +5,8 @@ parameters:
     app.path.article_images: uploads/articles/images
     dir.downloads: ../public/downloads
     mailer_user: 'ass-dep-anciens-combat@orange.fr'
+    apikey: 'c373211dbf581effa29f57c126298274'
+    apisecret: '9c072b2836a32b70cad5257354692d2f'
 
 services:
     # default configuration for services in *this* file

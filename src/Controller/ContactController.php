@@ -10,9 +10,11 @@ namespace App\Controller;
 
 
 use App\Form\ContactType;
+use \Mailjet\Resources;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+
 
 class ContactController extends Controller
 
@@ -20,15 +22,15 @@ class ContactController extends Controller
     /**
      * @Route("/contact", name="contact")
      */
-    public function indexAction(Request $request, \Swift_Mailer $mailer)
+    public function indexAction(Request $request)
     {
         $form = $this->createForm(ContactType::class);
 
         $form->handleRequest($request);
 
-        if($form ->isSubmitted() && $form->isValid()) {
-            $data = $form->getData();
-            $message= (new \Swift_Message('Contact to ADACVG'))
+        if ($form->isSubmitted() && $form->isValid()) {
+           $data = $form->getData();
+            /*$message= (new \Swift_Message('Contact to ADACVG'))
                 ->setFrom($data['email'])
                 ->setTo('anne.derenoncourt@gmail.com')
                 ->setBody(
@@ -38,7 +40,29 @@ class ContactController extends Controller
                     ),
                     'text/html'
                 );
-            $mailer->send($message);
+            $mailer->send($message);*/
+            $mj = new \Mailjet\Client($this->getParameter('apikey'), $this->getParameter('apisecret'), true, ['version' => 'v3.1']);
+            $body = [
+                'Messages' => [
+                    [
+                        'From' => [
+                            'Email' => "anne.derenoncourt@gmail.com",
+                            'Name' => $data['name'],
+                        ],
+                        'To' => [
+                            [
+                                'Email' => "anne.derenoncourt@gmail.com",
+                                'Name' => "Anne"
+                            ]
+                        ],
+                        'Subject' => "Contact to ADACVG",
+                        'HTMLPart' => "<p><strong>From : </strong>".$data['email']."</p><p><strong>Objet : </strong>".$data['subject']."</p><p><strong>Message : </strong>".$data['message']."</p>"
+                    ]
+                ]
+            ];
+            $response = $mj->post(Resources::$Email, ['body' => $body]);
+            $response->success() && var_dump($response->getData());
+
             $this->addFlash('notice', 'Votre message a été envoyé. Merci!');
             return $this->redirectToRoute('contact');
         }
