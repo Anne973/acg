@@ -79,7 +79,7 @@ class SecurityController extends Controller
                 $this->get('session')->getFlashBag()->add('info', "Email incorrect");
             }
         }
-        return $this->render('Security/forgotPassword.html.twig', array(
+        return $this->render('security/forgotPassword.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -104,7 +104,7 @@ class SecurityController extends Controller
             return $this->redirectToRoute('homepage');
         }
 
-        return $this->render('Security/newPassword.html.twig', array(
+        return $this->render('security/newPassword.html.twig', array(
             'form' => $form->createView(),
         ));
     }
