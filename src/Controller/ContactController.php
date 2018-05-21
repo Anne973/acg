@@ -46,13 +46,13 @@ class ContactController extends Controller
                 'Messages' => [
                     [
                         'From' => [
-                            'Email' => "acg@acg.april973.fr",
+                            'Email' => "adacvg@adacvg973.fr",
                             'Name' => $data['name'],
                         ],
                         'To' => [
                             [
-                                'Email' => "anne.derenoncourt@gmail.com",
-                                'Name' => "Anne"
+                                'Email' => "ass-dep-anciens-combat@orange.fr",
+                                'Name' => "Adacvg"
                             ]
                         ],
                         'Subject' => "Contact to ADACVG",
@@ -61,10 +61,14 @@ class ContactController extends Controller
                 ]
             ];
             $response = $mj->post(Resources::$Email, ['body' => $body]);
-            $response->success() && var_dump($response->getData());
+            if($response->success() && $response->getData()){
+                $this->addFlash('notice', 'Votre message a été envoyé. Merci!');
+                return $this->redirectToRoute('contact');
 
-            $this->addFlash('notice', 'Votre message a été envoyé. Merci!');
-            return $this->redirectToRoute('contact');
+            }else{
+                $this->addFlash('error','Problème de connexion. Retentez plus tard');
+            };
+
         }
         return $this->render('contact/contact.html.twig', array('form' => $form->createView()));
     }
