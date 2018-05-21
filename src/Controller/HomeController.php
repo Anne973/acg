@@ -40,4 +40,13 @@ class HomeController extends Controller
         return $this->render('home/legal.html.twig');
 
     }
+
+    /**
+     * @Route("/gallery", name="gallery")
+     */
+    public function galleryAction()
+    {
+        return $this->render('home/gallery.html.twig');
+
+    }
 }

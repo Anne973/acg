@@ -36,7 +36,7 @@ easy_admin:
                 fields:
                     - date
                     - { property: 'title', label: 'Titre' }
-                    - { property: 'content', type: 'Hillrange\CKEditor\Form\CKEditorType', label: 'Texte'}
+                    - { property: 'content', type: 'FOS\CKEditorBundle\Form\Type\CKEditorType', label: 'Texte'}
                     - { property: 'images', type: 'collection', type_options: { entry_type: 'App\Form\ImageType', by_reference: false}}
 
             edit:
@@ -44,7 +44,7 @@ easy_admin:
                 fields:
                     - date
                     - { property: 'title', label: 'Titre' }
-                    - { property: 'content', type: 'Hillrange\CKEditor\Form\CKEditorType', label: 'Texte' }
+                    - { property: 'content', type: 'FOS\CKEditorBundle\Form\Type\CKEditorType', label: 'Texte' }
                     - { property: 'images', type: 'collection', type_options: { entry_type: 'App\Form\ImageType', by_reference: false}}
 
 

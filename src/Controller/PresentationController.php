@@ -32,7 +32,7 @@ class PresentationController extends Controller
     }
 
     /**
-     * @Route("/anciens_presidents", name="anciens_presidents")
+     * @Route("/honorary_president", name="honorary_president")
      */
     public function formerPresidentsAction()
     {

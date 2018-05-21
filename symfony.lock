@@ -95,6 +95,9 @@
     "fig/link-util": {
         "version": "1.0.0"
     },
+    "friendsofsymfony/ckeditor-bundle": {
+        "version": "1.0.0"
+    },
     "guzzlehttp/guzzle": {
         "version": "6.3.3"
     },
@@ -103,15 +106,6 @@
     },
     "guzzlehttp/psr7": {
         "version": "1.4.2"
-    },
-    "hillrange/ckeditor": {
-        "version": "0.1",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
-            "version": "0.1",
-            "ref": "d3ce607b0f85f98d6cab2b6edff2cd6a47e3f577"
-        }
     },
     "imagine/imagine": {
         "version": "v0.7.1"
