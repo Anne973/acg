@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
-{% block title %}Actualités {% endblock %}
+{% block title %}{{ article.title }} -{% endblock %}
+
 {% block content %}
     <section id="inner-headline">
         <div class="container">
@@ -35,9 +36,7 @@
                                 {% for article in lastArticles %}
                                     <li>
                                         <h6><i class="icon icon-star-empty"></i><a href="{{ path ('article', {'id': article.id}) }}">{{ article.title }}</a></h6>
-                                        <p>
-                                            {{ article.limitedText|raw }}
-                                        </p>
+                                       
                                     </li>
                                 {% endfor %}
 
