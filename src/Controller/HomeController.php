@@ -2,6 +2,7 @@
 namespace App\Controller;
 use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -53,9 +54,12 @@ class HomeController extends Controller
     /**
      * @Route("/sitemap", name="sitemap")
      */
-    public function siteMapAction()
+    public function sitemapAction( Request $request)
     {
-        return $this->render('home/sitemap.html.twig');
+
+
+        return $this->render('home/sitemap.xml.twig');
+
 
     }
 }
