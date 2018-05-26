@@ -49,4 +49,13 @@ class HomeController extends Controller
         return $this->render('home/gallery.html.twig');
 
     }
+
+    /**
+     * @Route("/sitemap", name="sitemap")
+     */
+    public function siteMapAction()
+    {
+        return $this->render('home/sitemap.html.twig');
+
+    }
 }
