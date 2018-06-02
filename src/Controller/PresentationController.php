@@ -32,9 +32,9 @@ class PresentationController extends Controller
     }
 
     /**
-     * @Route("/honorary_president", name="honorary_president")
+     * @Route("/honorary", name="honorary")
      */
-    public function formerPresidentsAction()
+    public function honoraryAction()
     {
         return $this-> render('presentation/former.html.twig');
     }
