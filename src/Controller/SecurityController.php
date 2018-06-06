@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Entity\User;
@@ -6,6 +7,7 @@ use App\Form\ForgotPasswordType;
 use App\Form\NewPasswordType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Mailjet\Resources;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -33,7 +35,7 @@ class SecurityController extends Controller
 
         return $this->render('security/login.html.twig', array(
             'last_username' => $lastUsername,
-            'error'         => $error,
+            'error' => $error,
         ));
     }
 
@@ -58,26 +60,40 @@ class SecurityController extends Controller
                 $em->persist($user);
                 $em->flush();
 
-                $message = (new \Swift_Message('Votre demande de réinitialisation de mot de passe'))
-                    ->setFrom($this->getParameter('mailer_user'))
-                    ->setTo($user->getEmail())
-                    ->setBody(
-                        $this->renderView(
 
-                            'Emails/password.html.twig',
-                            array('user' => $user)
+                $mj = new \Mailjet\Client($this->getParameter('apikey'), $this->getParameter('apisecret'), true, ['version' => 'v3.1']);
+                $body = [
+                    'Messages' => [
+                        [
+                            'From' => [
+                                'Email' => "adacvg@adacvg973.fr",
+                                'Name' => "adacvg973",
+                            ],
+                            'To' => [
+                                [
+                                    'Email' => $data['email'],
+                                    'Name' => $user->getUsername()
+                                ]
+                            ],
+                            'Subject' => "Votre demande de réinitialisation de mot de passe",
+                            'HTMLPart' => "<p>Veuillez trouver ci-dessous le lien permettant de réinitialiser votre mot de passe:</p>
+                            
+                            "
+                        ]
+                    ]
+                ];
+                $response = $mj->post(Resources::$Email, ['body' => $body]);
+                if ($response->success() && $response->getData()) {
+                    $this->addFlash('info', 'Votre demande a été prise en compte. Vous
+                recevrez sous peu un lien vous permettant de réinitialiser votre mot de passe.');
+                    return $this->redirectToRoute('homepage');
 
-                        ),
-                        'text/html'
-                    );
-
-                $this->get('mailer')->send($message);
-                $this->get('session')->getFlashBag()->add('info', "Votre demande a été prise en compte. Vous
-                recevrez sous peu un lien vous permettant de réinitialiser votre mot de passe.");
-                return $this->redirectToRoute('homepage');
-            } else {
-                $this->get('session')->getFlashBag()->add('info', "Email incorrect");
+                } else {
+                    $this->addFlash('info', 'Problème de connexion. Recommencez plus tard.');
+                };
             }
+
+
         }
         return $this->render('security/forgotPassword.html.twig', array(
             'form' => $form->createView(),
@@ -108,7 +124,6 @@ class SecurityController extends Controller
             'form' => $form->createView(),
         ));
     }
-
 
 
 }
