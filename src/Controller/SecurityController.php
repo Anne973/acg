@@ -77,8 +77,13 @@ class SecurityController extends Controller
                             ],
                             'Subject' => "Votre demande de réinitialisation de mot de passe",
                             'HTMLPart' => "<p>Veuillez trouver ci-dessous le lien permettant de réinitialiser votre mot de passe:</p>
-                            
-                            "
+                            <p>{{var:url:\"\"}}</p>
+                            ",
+                            'TemplateLanguage' => true,
+                            'Variables' => [
+
+                                'url' =>$request->getSchemeAndHttpHost()."/register/".$user->getToken()
+                            ]
                         ]
                     ]
                 ];
