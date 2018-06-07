@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd9aa124-e380-402f-8444-ce12aa76df01" name="Default" comment="Session seb">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/img/works/full/image-08-full.jpg" afterPath="$PROJECT_DIR$/public/img/works/full/image-08-full.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/img/works/thumbs/image-08.jpg" afterPath="$PROJECT_DIR$/public/img/works/thumbs/image-08.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/base.html.twig" afterPath="$PROJECT_DIR$/templates/base.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/home/gallery.html.twig" afterPath="$PROJECT_DIR$/templates/home/gallery.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/home/home.html.twig" afterPath="$PROJECT_DIR$/templates/home/home.html.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -159,7 +154,7 @@
       <file leaf-file-name="gallery.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/home/gallery.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="106">
+            <state relative-caret-position="-105">
               <caret line="111" column="334" lean-forward="false" selection-start-line="111" selection-start-column="334" selection-end-line="111" selection-end-column="334" />
               <folding />
             </state>
@@ -780,7 +775,7 @@
       <workItem from="1527963003524" duration="3916000" />
       <workItem from="1528241822845" duration="9005000" />
       <workItem from="1528319633615" duration="7464000" />
-      <workItem from="1528392930056" duration="2605000" />
+      <workItem from="1528392930056" duration="2915000" />
     </task>
     <task id="LOCAL-00001" summary="Session seb">
       <created>1526049227808</created>
@@ -814,7 +809,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="356826000" />
+    <option name="totallyTimeSpent" value="357136000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1240,7 +1235,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/home/gallery.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
+        <state relative-caret-position="-105">
           <caret line="111" column="334" lean-forward="false" selection-start-line="111" selection-start-column="334" selection-end-line="111" selection-end-column="334" />
           <folding />
         </state>
