@@ -3,29 +3,33 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="google-site-verification" content="hKVmmWLRdniMsKX5n4K6ZqK8IqqAG6hWBUoXjn8EYho" />
+    <meta name="google-site-verification" content="hKVmmWLRdniMsKX5n4K6ZqK8IqqAG6hWBUoXjn8EYho"/>
     <title>{% block title %}{% endblock %} Association des anciens combattants et victimes de guerre de Guyane </title>
     <meta name="description" content="{% block description %}{% endblock %}">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content=""/>
 
     <!-- css -->
     {% block stylesheets %}
-    <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:300,400,600,700" rel="stylesheet">
-    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/bootstrap-responsive.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/fancybox/jquery.fancybox.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/jcarousel.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/flexslider.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
-    <!-- Theme skin -->
-    <link href="{{ asset('skins/default.css') }}" rel="stylesheet" />
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('ico/apple-touch-icon-144-precomposed.png') }}" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('ico/apple-touch-icon-114-precomposed.png') }}" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('ico/apple-touch-icon-72-precomposed.png') }}" />
-    <link rel="apple-touch-icon-precomposed" href="{{ asset('ico/apple-touch-icon-57-precomposed.png') }}" />
-    <link rel="shortcut icon" href="{{ asset('ico/favicon.png') }}" />
+        <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:300,400,600,700"
+              rel="stylesheet">
+        <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet"/>
+        <link href="{{ asset('css/bootstrap-responsive.css') }}" rel="stylesheet"/>
+        <link href="{{ asset('css/fancybox/jquery.fancybox.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/jcarousel.css') }}" rel="stylesheet"/>
+        <link href="{{ asset('css/flexslider.css') }}" rel="stylesheet"/>
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
+        <!-- Theme skin -->
+        <link href="{{ asset('skins/default.css') }}" rel="stylesheet"/>
+        <!-- Fav and touch icons -->
+        <link rel="apple-touch-icon-precomposed" sizes="144x144"
+              href="{{ asset('ico/apple-touch-icon-144-precomposed.png') }}"/>
+        <link rel="apple-touch-icon-precomposed" sizes="114x114"
+              href="{{ asset('ico/apple-touch-icon-114-precomposed.png') }}"/>
+        <link rel="apple-touch-icon-precomposed" sizes="72x72"
+              href="{{ asset('ico/apple-touch-icon-72-precomposed.png') }}"/>
+        <link rel="apple-touch-icon-precomposed" href="{{ asset('ico/apple-touch-icon-57-precomposed.png') }}"/>
+        <link rel="shortcut icon" href="{{ asset('ico/favicon.png') }}"/>
     {% endblock %}
     <!-- =======================================================
       Theme Name: Flattern
@@ -46,8 +50,8 @@
                     <ul>
                         <li><strong>ADACVG</strong></li>
                         <li><i class="icon-map-marker"></i>38, rue des 14 et 22 juin 1962 - Cayenne</li>
-                        <li><i class="icon-phone"></i>05 94 31 47 23 </li>
-                        <li>Permanences : Les lundis et vendredis de 8h30 à 10h </li>
+                        <li><i class="icon-phone"></i>05 94 31 47 23</li>
+                        <li>Permanences : Les lundis et vendredis de 8h30 à 10h</li>
                     </ul>
                 </div>
             </div>
@@ -59,7 +63,8 @@
         <div class="container ">
             <!-- hidden top area toggle link -->
             <div id="header-hidden-link">
-                <a href="#" class="toggle-link" title="Cliquez pour faire apparaître nos coordonnées" data-target=".hidden-top"><i></i>Open</a>
+                <a href="#" class="toggle-link" title="Cliquez pour faire apparaître nos coordonnées"
+                   data-target=".hidden-top"><i></i>Open</a>
             </div>
             <!-- end toggle link -->
             <div class="row nomargin">
@@ -67,12 +72,14 @@
                     <div class="headnav">
                         {% if app.user==null %}
 
-                        {%  else %}
-                            bienvenue {{ app.user.username }} <a href="{{ path('logout') }}"><i class="icon-signout"> </i></a>
+                        {% else %}
+                            bienvenue {{ app.user.username }} <a href="{{ path('logout') }}"><i
+                                    class="icon-signout"> </i></a>
                         {% endif %}
                     </div>
                     <!-- Signup Modal -->
-                    <div id="mySignup" class="modal styled hide fade" tabindex="-1" role="dialog" aria-labelledby="mySignupModalLabel" aria-hidden="true">
+                    <div id="mySignup" class="modal styled hide fade" tabindex="-1" role="dialog"
+                         aria-labelledby="mySignupModalLabel" aria-hidden="true">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             <h4 id="mySignupModalLabel">Create an <strong>account</strong></h4>
@@ -102,7 +109,8 @@
                                         <button type="submit" class="btn">Sign up</button>
                                     </div>
                                     <p class="aligncenter margintop20">
-                                        Already have an account? <a href="#mySignin" data-dismiss="modal" aria-hidden="true" data-toggle="modal">Sign in</a>
+                                        Already have an account? <a href="#mySignin" data-dismiss="modal"
+                                                                    aria-hidden="true" data-toggle="modal">Sign in</a>
                                     </p>
                                 </div>
                             </form>
@@ -110,7 +118,8 @@
                     </div>
                     <!-- end signup modal -->
                     <!-- Sign in Modal -->
-                    <div id="mySignin" class="modal styled hide fade" tabindex="-1" role="dialog" aria-labelledby="mySigninModalLabel" aria-hidden="true">
+                    <div id="mySignin" class="modal styled hide fade" tabindex="-1" role="dialog"
+                         aria-labelledby="mySigninModalLabel" aria-hidden="true">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             <h4 id="mySigninModalLabel">Login to your <strong>account</strong></h4>
@@ -134,7 +143,8 @@
                                         <button type="submit" class="btn">Sign in</button>
                                     </div>
                                     <p class="aligncenter margintop20">
-                                        Forgot password? <a href="#myReset" data-dismiss="modal" aria-hidden="true" data-toggle="modal">Reset</a>
+                                        Forgot password? <a href="#myReset" data-dismiss="modal" aria-hidden="true"
+                                                            data-toggle="modal">Reset</a>
                                     </p>
                                 </div>
                             </form>
@@ -142,7 +152,8 @@
                     </div>
                     <!-- end signin modal -->
                     <!-- Reset Modal -->
-                    <div id="myReset" class="modal styled hide fade" tabindex="-1" role="dialog" aria-labelledby="myResetModalLabel" aria-hidden="true">
+                    <div id="myReset" class="modal styled hide fade" tabindex="-1" role="dialog"
+                         aria-labelledby="myResetModalLabel" aria-hidden="true">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             <h4 id="myResetModalLabel">Reset your <strong>password</strong></h4>
@@ -172,35 +183,71 @@
             <div class="row">
                 <div class="span6">
                     <div class="logo">
-                        <a href="{{ path('homepage') }}"><img src="{{ asset('img/logo.png') }}" alt="" class="logo" /></a>
+                        <a href="{{ path('homepage') }}"><img src="{{ asset('img/logo.png') }}" alt=""
+                                                              class="logo"/></a>
 
-                    <h1>Association Départementale des Anciens Combattants et des Victimes de Guerre de Guyane française</h1>
-                </div>
+                        <h1>Association Départementale des Anciens Combattants et des Victimes de Guerre de Guyane
+                            française</h1>
+                    </div>
                 </div>
                 <div class="span6">
                     <div class="navbar navbar-static-top">
                         <div class="navigation">
                             <nav>
                                 <ul class="nav topnav">
+                                    {% if app.request.attributes.get("_route")=='homepage' %}
                                     <li class="dropdown active">
+                                {% elseif app.request.attributes.get("_route")=='presentation' %}
+                                    <li class="dropdown active ">
+                                {% elseif app.request.attributes.get("_route")=='conseil_administration' %}
+                                    <li class="dropdown active ">
+                                {% elseif app.request.attributes.get("_route")=='honorary' %}
+                                    <li class="dropdown active ">
+                                        {% else %}
+                                    <li class="dropdown">
+                                        {% endif %}
                                         <a href="#">L'association <i class="icon-angle-down"></i></a>
                                         <ul class="dropdown-menu">
                                             <li><a href="{{ path ('presentation') }}">Présentation</a></li>
-                                            <li><a href="{{ path ('conseil_administration') }}">Le conseil d'administration</a></li>
+                                            <li><a href="{{ path ('conseil_administration') }}">Le conseil
+                                                    d'administration</a></li>
                                             <li><a href="{{ path ('honorary') }}">Honorariat</a></li>
                                         </ul>
                                     </li>
-                                    <li>
+                                    {% if app.request.attributes.get("_route")=='actualites' %}
+                                    <li class="active">
+                                {% elseif app.request.attributes.get("_route")=='article' %}
+                                    <li class="active">
+                                        {% else %}
+                                        <li>
+                                        {% endif %}
                                         <a href="{{ path ('actualites') }}">Actualités </a>
                                     </li>
+
+
+                                    {% if app.request.attributes.get("_route")=='adhesion' %}
+                                    <li class="active">
+                                {% else %}
                                     <li>
+                                        {% endif %}
                                         <a href="{{ path('adhesion') }}">Rejoignez-nous </a>
                                     </li>
+
+
+                                    {% if app.request.attributes.get("_route")=='calendrier' %}
+                                    <li class="active">
+                                {% else %}
                                     <li>
+                                        {% endif %}
                                         <a href="{{ path('calendrier') }}">Calendrier </a>
                                     </li>
 
+
+                                    {% if app.request.attributes.get("_route")=='contact' %}
+                                    <li class="active">
+                                        {% else %}
                                     <li>
+                                        {% endif %}
                                         <a href="{{ path ('contact') }}">Contact </a>
                                     </li>
                                 </ul>
@@ -249,7 +296,7 @@
                         <h5 class="widgetheading">Gardez le contact</h5>
                         <address>
                             <strong>38, rue des 14 et 22 juin 1962</strong><br>
-                           97300 Cayenne<br>
+                            97300 Cayenne<br>
                             Guyane française
                         </address>
                         <p>
@@ -269,7 +316,8 @@
                                 <span>&copy; ADACVG Guyane 2018 - Tous droits réservés.</span>
                             </p>
                             <p>
-                                <span>Conception et réalisation : <a href="http://andweb.april973.fr">AnDWeb973</a></span>
+                                <span>Conception et réalisation : <a
+                                            href="http://andweb.april973.fr">AnDWeb973</a></span>
                             </p>
                             <div class="credits">
                                 <!--
