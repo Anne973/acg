@@ -82,7 +82,7 @@ class SecurityController extends Controller
                             'TemplateLanguage' => true,
                             'Variables' => [
 
-                                'url' =>$request->getSchemeAndHttpHost()."/register/".$user->getToken()
+                                'url' =>$request->getSchemeAndHttpHost()."/register/".$key=$user->getToken()
                             ]
                         ]
                     ]
