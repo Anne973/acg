@@ -77,7 +77,7 @@ class SecurityController extends Controller
                             ],
                             'Subject' => "Votre demande de réinitialisation de mot de passe",
                             'HTMLPart' => "<p>Veuillez trouver ci-dessous le lien permettant de réinitialiser votre mot de passe:</p>
-                            <p>{{var:url:\"\"}}</p>
+                            <p><a href=\"{{var:url:''}}\">{{var:url:''}}</a></p>
                             ",
                             'TemplateLanguage' => true,
                             'Variables' => [

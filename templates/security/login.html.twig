@@ -23,7 +23,7 @@
 
             <div class="modal styled" style="margin: auto" aria-labelledby="mySigninModalLabel" aria-hidden="true"  >
                 {% if error %}
-                    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    <p class="alert alert-warning" style="margin-bottom:0"><i class="icon-exclamation-sign"></i>Identifiants invalides</p>
                 {% endif %}
                 <div class="modal-header">
 
